@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:untitled1/Value/app_color.dart';
+import 'package:untitled1/view/home_page/userPage/Component/Avatar.dart';
 import 'package:untitled1/view/home_page/userPage/Component/TabViewInfo.dart';
 
 class TabInfo {
@@ -34,10 +35,34 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<OptionTabInfo> listOptionTabs = [
       OptionTabInfo(listTab: [
-        TabInfo(title: "Họ Tên", icon: Icons.person_outline),
-        TabInfo(title: "Số Điện Thoại", icon: Icons.phone_outlined),
-        TabInfo(title: "Ngày Sinh", icon: Icons.date_range_outlined),
-        TabInfo(title: "Địa Chỉ", icon: Icons.location_city_outlined),
+        TabInfo(
+          title: "Họ Tên",
+          icon: Icons.person_outline,
+          onPressed: () {
+            print("Họ Tên");
+          },
+        ),
+        TabInfo(
+          title: "Số Điện Thoại",
+          icon: Icons.phone_outlined,
+          onPressed: () {
+            print("Số Điện Thoại");
+          },
+        ),
+        TabInfo(
+          title: "Ngày Sinh",
+          icon: Icons.date_range_outlined,
+          onPressed: () {
+            print("Ngày Sinh");
+          },
+        ),
+        TabInfo(
+          title: "Địa Chỉ",
+          icon: Icons.location_city_outlined,
+          onPressed: () {
+            print("Địa Chỉ");
+          },
+        ),
       ]),
       OptionTabInfo(listTab: [
         TabInfo(title: "Đổi mật khẩu", isVisibleValueView: false),
@@ -48,43 +73,34 @@ class UserPage extends StatelessWidget {
             color: TColors.red_500)
       ]),
     ];
-    return SingleChildScrollView(
-      child: Stack(
-        children: [
-          Container(
-            color: TColors.blue_400,
-            padding: EdgeInsets.only(top: 96),
-            margin: EdgeInsets.only(top: 96),
-            child: Column(
-              children: listOptionTabs.map((e) {
-                return Container(
-                    padding: EdgeInsets.only(bottom: 48),
-                    child: Column(
-                        children: e.listTab.map((tabInfo) {
-                      return TabInfoView(tabInfo);
-                    }).toList()));
-              }).toList(),
+    return Container(
+      color: Colors.brown,
+      child: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.white,
+              padding: const EdgeInsets.only(top: 128),
+              margin: const EdgeInsets.only(top: 128),
+              child: Column(
+                children: listOptionTabs.map((e) {
+                  return Container(
+                      padding: EdgeInsets.only(bottom: 48),
+                      child: Column(
+                          children: e.listTab.map((tabInfo) {
+                        return TabInfoView(tabInfo);
+                      }).toList()));
+                }).toList(),
+              ),
             ),
-          ),
-          Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(180)),
-                  border: Border.all(width: 2, color: TColors.neutral_300),
-                  color: Colors.black),
-              height: 180,
-              width: 180,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(180)),
-                  child: Image.asset(
-                    "assets/images/Image_tam.png",
-                    height: 180,
-                    width: 180,
-                    fit: BoxFit.cover,
-                  )),
+            Container(
+              margin: const EdgeInsets.only(top: 32),
+              child: Center(
+                child: Avatar(),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

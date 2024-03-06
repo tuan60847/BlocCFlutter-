@@ -26,7 +26,10 @@ Widget BottomAppBarCustom({
           return GestureDetector(
             onTap: () => onPressed(index),
             child: IconButtomAppBar(
-                Items: item, currentIndex: currentIndex, index: index),
+              Items: item,
+              currentIndex: currentIndex,
+              index: index,
+            ),
           );
         }).toList(),
       ),
